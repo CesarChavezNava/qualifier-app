@@ -43,13 +43,16 @@
             this.nudPincel = new System.Windows.Forms.NumericUpDown();
             this.lblPincel = new System.Windows.Forms.Label();
             this.lblStudents = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.lblFont = new System.Windows.Forms.Label();
+            this.nudFont = new System.Windows.Forms.NumericUpDown();
+            this.btnNote = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.pPictureBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPincel)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFont)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFolder
@@ -194,7 +197,7 @@
             // 
             this.lblPincel.AutoSize = true;
             this.lblPincel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPincel.Location = new System.Drawing.Point(39, 134);
+            this.lblPincel.Location = new System.Drawing.Point(26, 132);
             this.lblPincel.Name = "lblPincel";
             this.lblPincel.Size = new System.Drawing.Size(91, 13);
             this.lblPincel.TabIndex = 14;
@@ -204,28 +207,64 @@
             // 
             this.lblStudents.AutoSize = true;
             this.lblStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudents.Location = new System.Drawing.Point(39, 222);
+            this.lblStudents.Location = new System.Drawing.Point(26, 322);
             this.lblStudents.Name = "lblStudents";
             this.lblStudents.Size = new System.Drawing.Size(77, 13);
             this.lblStudents.TabIndex = 15;
             this.lblStudents.Text = "Mis Alumnos";
             // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.dgvStudents);
-            this.panel1.Location = new System.Drawing.Point(3, 242);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(254, 571);
-            this.panel1.TabIndex = 16;
-            // 
             // dgvStudents
             // 
             this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudents.Location = new System.Drawing.Point(4, 4);
+            this.dgvStudents.Location = new System.Drawing.Point(4, 349);
             this.dgvStudents.Name = "dgvStudents";
-            this.dgvStudents.Size = new System.Drawing.Size(247, 564);
+            this.dgvStudents.Size = new System.Drawing.Size(253, 464);
             this.dgvStudents.TabIndex = 0;
+            // 
+            // txtNote
+            // 
+            this.txtNote.Location = new System.Drawing.Point(29, 248);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(214, 37);
+            this.txtNote.TabIndex = 17;
+            // 
+            // lblFont
+            // 
+            this.lblFont.AutoSize = true;
+            this.lblFont.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFont.Location = new System.Drawing.Point(26, 224);
+            this.lblFont.Name = "lblFont";
+            this.lblFont.Size = new System.Drawing.Size(85, 13);
+            this.lblFont.TabIndex = 18;
+            this.lblFont.Text = "Tamaño Letra";
+            // 
+            // nudFont
+            // 
+            this.nudFont.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudFont.Location = new System.Drawing.Point(171, 222);
+            this.nudFont.Name = "nudFont";
+            this.nudFont.Size = new System.Drawing.Size(72, 20);
+            this.nudFont.TabIndex = 19;
+            this.nudFont.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
+            // btnNote
+            // 
+            this.btnNote.BackColor = System.Drawing.Color.Green;
+            this.btnNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNote.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnNote.Location = new System.Drawing.Point(97, 291);
+            this.btnNote.Name = "btnNote";
+            this.btnNote.Size = new System.Drawing.Size(146, 23);
+            this.btnNote.TabIndex = 20;
+            this.btnNote.Text = "Agregar Nota";
+            this.btnNote.UseVisualStyleBackColor = false;
+            this.btnNote.Click += new System.EventHandler(this.BtnNote_Click);
             // 
             // MyQualifierForm
             // 
@@ -234,7 +273,11 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1395, 841);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnNote);
+            this.Controls.Add(this.nudFont);
+            this.Controls.Add(this.lblFont);
+            this.Controls.Add(this.txtNote);
+            this.Controls.Add(this.dgvStudents);
             this.Controls.Add(this.lblStudents);
             this.Controls.Add(this.lblPincel);
             this.Controls.Add(this.nudPincel);
@@ -258,8 +301,8 @@
             this.pPictureBox.ResumeLayout(false);
             this.pPictureBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPincel)).EndInit();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFont)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,8 +324,11 @@
         private System.Windows.Forms.NumericUpDown nudPincel;
         private System.Windows.Forms.Label lblPincel;
         private System.Windows.Forms.Label lblStudents;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvStudents;
+        private System.Windows.Forms.TextBox txtNote;
+        private System.Windows.Forms.Label lblFont;
+        private System.Windows.Forms.NumericUpDown nudFont;
+        private System.Windows.Forms.Button btnNote;
     }
 }
 

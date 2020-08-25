@@ -154,10 +154,12 @@ namespace QualifierApp
             if(maxImages > indexCurrentImage)
             {
                 pbImage.Image = new Bitmap(studentImages[indexCurrentImage]);
+                txtNote.Text = "";
             }
             else
             {
                 btnClean.Enabled = false;
+                txtNote.Text = "";
                 MessageBox.Show("Ya haz calificado toda la tarea.");
             }
         }
@@ -170,6 +172,7 @@ namespace QualifierApp
 
         private void BtnClean_Click(object sender, EventArgs e)
         {
+            txtNote.Text = "";
             pbImage.Image = new Bitmap(studentImages[indexCurrentImage]);
         }
 
@@ -177,6 +180,22 @@ namespace QualifierApp
         {
             NumericUpDown numericUpDown = (NumericUpDown)sender;
             brushSize = (int)numericUpDown.Value;
+        }
+
+        private void BtnNote_Click(object sender, EventArgs e)
+        {
+            if (pbImage.Image != null)
+            {
+                using (Font font = new Font("Arial", (int)nudFont.Value))
+                {
+                    Graphics graphics = Graphics.FromImage(pbImage.Image);
+                    SolidBrush brush = new SolidBrush(brushColor);
+                    graphics.DrawString(txtNote.Text, font, brush, new Point(10, 10));
+                    graphics.Save();
+
+                    pbImage.Image = pbImage.Image;
+                }
+            }
         }
     }
 }
