@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace QualifierApp
 {
-    public partial class Folder : Form
+    public partial class FolderForm : Form
     {
-        public Folder()
+        public FolderForm()
         {
             InitializeComponent();
         }

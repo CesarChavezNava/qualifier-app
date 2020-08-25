@@ -7,11 +7,23 @@ using System.Windows.Forms;
 
 namespace QualifierApp
 {
-    public partial class Form1 : Form
+    public partial class MyQualifierForm : Form
     {
-        public Form1()
+        private Color brushColor = Color.Blue;
+        private int brushSize = 3;
+        private int indexCurrentImage = 0;
+        private int maxImages = 0;
+        private bool draw = false;
+
+        private string[] studentImages;
+
+        public MyQualifierForm()
         {
             InitializeComponent();
+
+            cbStudent.Enabled = false;
+            btnClean.Enabled = false;
+            btnComplete.Enabled = false;
         }
 
         private void BtnFolder_Click(object sender, EventArgs e)
@@ -21,51 +33,51 @@ namespace QualifierApp
                 if(fbd.ShowDialog() == DialogResult.OK)
                 {
                     txtFolder.Text = fbd.SelectedPath;
-                    string[] studentFolders = Directory.GetDirectories(fbd.SelectedPath);
 
+                    string[] studentFolders = Directory.GetDirectories(fbd.SelectedPath);
                     cbStudent.DataSource = studentFolders;
+
+                    cbStudent.Enabled = true;
                 }
             }
         }
 
-        string[] studentFiles;
-        int numberFile = 0;
-        int maxNumberFiles = 0;
         private void CbStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                numberFile = 0;
-                maxNumberFiles = 0;
-
-                studentFiles = Directory.GetFiles(cbStudent.SelectedValue.ToString()).Where(x => !x.Contains("calificado")).ToArray();
-                maxNumberFiles = studentFiles.Count();
-
-                pbImage.Image = new Bitmap(studentFiles[numberFile]);
+                indexCurrentImage = 0;
+                maxImages = 0;
                 btnClean.Enabled = true;
-            } catch(Exception ex)
+                btnComplete.Enabled = true;
+
+                studentImages = Directory.GetFiles(cbStudent.SelectedValue.ToString()).Where(x => !x.Contains("calificado")).ToArray();
+                maxImages = studentImages.Count();
+                pbImage.Image = new Bitmap(studentImages[indexCurrentImage]); 
+            } catch
             {
-                MessageBox.Show("El alumno no tiene ninguna tarea.");
+                MessageBox.Show("No hay tareas cargadas en esta carpeta.");
+                btnClean.Enabled = false;
+                btnComplete.Enabled = false;
             }
-            
-
         }
-
-        bool draw = false;
-        Color color = Color.Blue;
+        
         private void PbImage_MouseDown(object sender, MouseEventArgs e)
         {
             try
             {
                 draw = true;
                 Graphics graphics = Graphics.FromImage(pbImage.Image);
-                Pen pen = new Pen(color, 4);
+                Pen pen = new Pen(brushColor, 4);
                 graphics.DrawRectangle(pen, e.X, e.Y, 2, 2);
                 graphics.Save();
 
                 pbImage.Image = pbImage.Image;
             }
-            catch { }
+            catch
+            {
+                MessageBox.Show("No ha cargado imagenes en el panel.");
+            }
             
         }
 
@@ -74,7 +86,7 @@ namespace QualifierApp
             draw = false;
         }
 
-        int s = 3;
+        
         private void PbImage_MouseMove(object sender, MouseEventArgs e)
         {
             try
@@ -82,14 +94,17 @@ namespace QualifierApp
                 if (draw)
                 {
                     Graphics graphics = Graphics.FromImage(pbImage.Image);
-                    SolidBrush brush = new SolidBrush(color);
-                    graphics.FillRectangle(brush, e.X, e.Y, s, s);
+                    SolidBrush brush = new SolidBrush(brushColor);
+                    graphics.FillRectangle(brush, e.X, e.Y, brushSize, brushSize);
                     graphics.Save();
 
                     pbImage.Image = pbImage.Image;
                 }
             }
-            catch { }
+            catch
+            {
+                MessageBox.Show("No ha cargado imagenes en el panel.");
+            }
         }
 
         private void BtnColor_Click(object sender, EventArgs e)
@@ -98,8 +113,8 @@ namespace QualifierApp
             {
                 if(cd.ShowDialog() == DialogResult.OK)
                 {
-                    txtColor.BackColor = cd.Color;
-                    color = cd.Color;
+                    btnColor.BackColor = cd.Color;
+                    brushColor = cd.Color;
                 }
             }
         }
@@ -107,19 +122,18 @@ namespace QualifierApp
         private void BtnComplete_Click(object sender, EventArgs e)
         {
             string path = cbStudent.SelectedItem.ToString();
-            Image image = pbImage.Image;
-            Bitmap bitmap = new Bitmap(image);
 
+            Bitmap bitmap = new Bitmap(pbImage.Image);
             Graphics graphics = Graphics.FromImage(bitmap);
             graphics.Dispose();
 
-            bitmap.Save(path + @"\calificado-" + Path.GetFileName(studentFiles[numberFile]) + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            bitmap.Save(path + @"\calificado-" + Path.GetFileName(studentImages[indexCurrentImage]) + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             bitmap.Dispose();
 
-            numberFile++;
-            if(maxNumberFiles > numberFile)
+            indexCurrentImage++;
+            if(maxImages > indexCurrentImage)
             {
-                pbImage.Image = new Bitmap(studentFiles[numberFile]);
+                pbImage.Image = new Bitmap(studentImages[indexCurrentImage]);
             }
             else
             {
@@ -130,13 +144,19 @@ namespace QualifierApp
 
         private void BtnCreate_Click(object sender, EventArgs e)
         {
-            Folder folderForm = new Folder();
+            FolderForm folderForm = new FolderForm();
             folderForm.Show();
         }
 
         private void BtnClean_Click(object sender, EventArgs e)
         {
-            pbImage.Image = new Bitmap(studentFiles[numberFile]);
+            pbImage.Image = new Bitmap(studentImages[indexCurrentImage]);
+        }
+
+        private void NudPincel_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown numericUpDown = (NumericUpDown)sender;
+            brushSize = (int)numericUpDown.Value;
         }
     }
 }

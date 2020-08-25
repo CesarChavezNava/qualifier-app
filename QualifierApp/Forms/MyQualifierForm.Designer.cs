@@ -1,6 +1,6 @@
 ﻿namespace QualifierApp
 {
-    partial class Form1
+    partial class MyQualifierForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyQualifierForm));
             this.lblFolder = new System.Windows.Forms.Label();
             this.txtFolder = new System.Windows.Forms.TextBox();
             this.btnFolder = new System.Windows.Forms.Button();
@@ -36,13 +36,15 @@
             this.cbStudent = new System.Windows.Forms.ComboBox();
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.btnColor = new System.Windows.Forms.Button();
-            this.txtColor = new System.Windows.Forms.TextBox();
             this.btnComplete = new System.Windows.Forms.Button();
             this.pPictureBox = new System.Windows.Forms.Panel();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
+            this.nudPincel = new System.Windows.Forms.NumericUpDown();
+            this.lblPincel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.pPictureBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPincel)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFolder
@@ -107,26 +109,17 @@
             // 
             // btnColor
             // 
+            this.btnColor.BackColor = System.Drawing.Color.Blue;
             this.btnColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnColor.Location = new System.Drawing.Point(115, 129);
+            this.btnColor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnColor.Location = new System.Drawing.Point(29, 158);
             this.btnColor.Name = "btnColor";
-            this.btnColor.Size = new System.Drawing.Size(60, 23);
+            this.btnColor.Size = new System.Drawing.Size(146, 23);
             this.btnColor.TabIndex = 7;
-            this.btnColor.Text = "...";
-            this.btnColor.UseVisualStyleBackColor = true;
+            this.btnColor.Text = "Cambiar Color";
+            this.btnColor.UseVisualStyleBackColor = false;
             this.btnColor.Click += new System.EventHandler(this.BtnColor_Click);
-            // 
-            // txtColor
-            // 
-            this.txtColor.BackColor = System.Drawing.Color.Blue;
-            this.txtColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtColor.Enabled = false;
-            this.txtColor.ForeColor = System.Drawing.SystemColors.Window;
-            this.txtColor.Location = new System.Drawing.Point(29, 130);
-            this.txtColor.Name = "txtColor";
-            this.txtColor.Size = new System.Drawing.Size(83, 20);
-            this.txtColor.TabIndex = 8;
             // 
             // btnComplete
             // 
@@ -170,7 +163,7 @@
             this.btnClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClean.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnClean.Location = new System.Drawing.Point(29, 156);
+            this.btnClean.Location = new System.Drawing.Point(29, 187);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(146, 23);
             this.btnClean.TabIndex = 12;
@@ -178,18 +171,43 @@
             this.btnClean.UseVisualStyleBackColor = false;
             this.btnClean.Click += new System.EventHandler(this.BtnClean_Click);
             // 
-            // Form1
+            // nudPincel
+            // 
+            this.nudPincel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudPincel.Location = new System.Drawing.Point(136, 132);
+            this.nudPincel.Name = "nudPincel";
+            this.nudPincel.Size = new System.Drawing.Size(39, 20);
+            this.nudPincel.TabIndex = 13;
+            this.nudPincel.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.nudPincel.ValueChanged += new System.EventHandler(this.NudPincel_ValueChanged);
+            // 
+            // lblPincel
+            // 
+            this.lblPincel.AutoSize = true;
+            this.lblPincel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPincel.Location = new System.Drawing.Point(39, 134);
+            this.lblPincel.Name = "lblPincel";
+            this.lblPincel.Size = new System.Drawing.Size(91, 13);
+            this.lblPincel.TabIndex = 14;
+            this.lblPincel.Text = "Tamaño Pincel";
+            // 
+            // MyQualifierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1338, 841);
+            this.Controls.Add(this.lblPincel);
+            this.Controls.Add(this.nudPincel);
             this.Controls.Add(this.btnClean);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.pPictureBox);
             this.Controls.Add(this.btnComplete);
-            this.Controls.Add(this.txtColor);
             this.Controls.Add(this.btnColor);
             this.Controls.Add(this.cbStudent);
             this.Controls.Add(this.lblStudent);
@@ -198,13 +216,14 @@
             this.Controls.Add(this.lblFolder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "MyQualifierForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mi Calificador";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.pPictureBox.ResumeLayout(false);
             this.pPictureBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPincel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,11 +238,12 @@
         private System.Windows.Forms.ComboBox cbStudent;
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.Button btnColor;
-        private System.Windows.Forms.TextBox txtColor;
         private System.Windows.Forms.Button btnComplete;
         private System.Windows.Forms.Panel pPictureBox;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnClean;
+        private System.Windows.Forms.NumericUpDown nudPincel;
+        private System.Windows.Forms.Label lblPincel;
     }
 }
 
