@@ -42,9 +42,14 @@
             this.btnClean = new System.Windows.Forms.Button();
             this.nudPincel = new System.Windows.Forms.NumericUpDown();
             this.lblPincel = new System.Windows.Forms.Label();
+            this.lblStudents = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvStudents = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.pPictureBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPincel)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFolder
@@ -113,7 +118,7 @@
             this.btnColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnColor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnColor.Location = new System.Drawing.Point(29, 158);
+            this.btnColor.Location = new System.Drawing.Point(97, 158);
             this.btnColor.Name = "btnColor";
             this.btnColor.Size = new System.Drawing.Size(146, 23);
             this.btnColor.TabIndex = 7;
@@ -127,9 +132,9 @@
             this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnComplete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnComplete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnComplete.Location = new System.Drawing.Point(1144, 772);
+            this.btnComplete.Location = new System.Drawing.Point(1199, 769);
             this.btnComplete.Name = "btnComplete";
-            this.btnComplete.Size = new System.Drawing.Size(171, 44);
+            this.btnComplete.Size = new System.Drawing.Size(184, 44);
             this.btnComplete.TabIndex = 9;
             this.btnComplete.Text = "Completar";
             this.btnComplete.UseVisualStyleBackColor = false;
@@ -139,7 +144,7 @@
             // 
             this.pPictureBox.AutoScroll = true;
             this.pPictureBox.Controls.Add(this.pbImage);
-            this.pPictureBox.Location = new System.Drawing.Point(190, 129);
+            this.pPictureBox.Location = new System.Drawing.Point(263, 129);
             this.pPictureBox.Name = "pPictureBox";
             this.pPictureBox.Size = new System.Drawing.Size(926, 687);
             this.pPictureBox.TabIndex = 10;
@@ -149,9 +154,9 @@
             this.btnCreate.BackColor = System.Drawing.Color.YellowGreen;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(1144, 24);
+            this.btnCreate.Location = new System.Drawing.Point(1199, 22);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(171, 44);
+            this.btnCreate.Size = new System.Drawing.Size(184, 44);
             this.btnCreate.TabIndex = 11;
             this.btnCreate.Text = "Crear Carpetas";
             this.btnCreate.UseVisualStyleBackColor = false;
@@ -163,7 +168,7 @@
             this.btnClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClean.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnClean.Location = new System.Drawing.Point(29, 187);
+            this.btnClean.Location = new System.Drawing.Point(97, 187);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(146, 23);
             this.btnClean.TabIndex = 12;
@@ -174,9 +179,9 @@
             // nudPincel
             // 
             this.nudPincel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudPincel.Location = new System.Drawing.Point(136, 132);
+            this.nudPincel.Location = new System.Drawing.Point(171, 129);
             this.nudPincel.Name = "nudPincel";
-            this.nudPincel.Size = new System.Drawing.Size(39, 20);
+            this.nudPincel.Size = new System.Drawing.Size(72, 20);
             this.nudPincel.TabIndex = 13;
             this.nudPincel.Value = new decimal(new int[] {
             3,
@@ -195,13 +200,42 @@
             this.lblPincel.TabIndex = 14;
             this.lblPincel.Text = "Tamaño Pincel";
             // 
+            // lblStudents
+            // 
+            this.lblStudents.AutoSize = true;
+            this.lblStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudents.Location = new System.Drawing.Point(39, 222);
+            this.lblStudents.Name = "lblStudents";
+            this.lblStudents.Size = new System.Drawing.Size(77, 13);
+            this.lblStudents.TabIndex = 15;
+            this.lblStudents.Text = "Mis Alumnos";
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.dgvStudents);
+            this.panel1.Location = new System.Drawing.Point(3, 242);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(254, 571);
+            this.panel1.TabIndex = 16;
+            // 
+            // dgvStudents
+            // 
+            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudents.Location = new System.Drawing.Point(4, 4);
+            this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.Size = new System.Drawing.Size(247, 564);
+            this.dgvStudents.TabIndex = 0;
+            // 
             // MyQualifierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1338, 841);
+            this.ClientSize = new System.Drawing.Size(1395, 841);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lblStudents);
             this.Controls.Add(this.lblPincel);
             this.Controls.Add(this.nudPincel);
             this.Controls.Add(this.btnClean);
@@ -224,6 +258,8 @@
             this.pPictureBox.ResumeLayout(false);
             this.pPictureBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPincel)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,6 +280,9 @@
         private System.Windows.Forms.Button btnClean;
         private System.Windows.Forms.NumericUpDown nudPincel;
         private System.Windows.Forms.Label lblPincel;
+        private System.Windows.Forms.Label lblStudents;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgvStudents;
     }
 }
 

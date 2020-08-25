@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -16,6 +17,7 @@ namespace QualifierApp
         private bool draw = false;
 
         private string[] studentImages;
+        private DataTable students;
 
         public MyQualifierForm()
         {
@@ -37,6 +39,24 @@ namespace QualifierApp
                     string[] studentFolders = Directory.GetDirectories(fbd.SelectedPath);
                     cbStudent.DataSource = studentFolders;
 
+                    students = new DataTable("Students");
+                    students.Clear();
+
+                    students.Columns.Add("Nombre", typeof(string));
+
+                    foreach (string studentFolder in studentFolders)
+                    {
+                        string[] studentSplit = studentFolder.Split(Path.DirectorySeparatorChar);
+                        string student = studentSplit[studentSplit.Count() - 1];
+
+                        DataRow drStudent = students.NewRow();
+                        drStudent["Nombre"] = student;
+
+                        students.Rows.Add(student);
+                    }
+
+                    dgvStudents.DataSource = students;
+                    
                     cbStudent.Enabled = true;
                 }
             }
@@ -127,7 +147,7 @@ namespace QualifierApp
             Graphics graphics = Graphics.FromImage(bitmap);
             graphics.Dispose();
 
-            bitmap.Save(path + @"\calificado-" + Path.GetFileName(studentImages[indexCurrentImage]) + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            bitmap.Save(path + @"\calificado-" + Path.GetFileName(studentImages[indexCurrentImage]), System.Drawing.Imaging.ImageFormat.Jpeg);
             bitmap.Dispose();
 
             indexCurrentImage++;
