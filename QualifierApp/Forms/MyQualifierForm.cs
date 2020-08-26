@@ -14,6 +14,8 @@ namespace QualifierApp
         private int brushSize = 3;
         private int indexCurrentImage = 0;
         private int maxImages = 0;
+        private int indexCurrentStudent = 0;
+        private int maxStudents = 0;
         private bool draw = false;
 
         private string[] studentImages;
@@ -39,11 +41,13 @@ namespace QualifierApp
                     string[] studentFolders = Directory.GetDirectories(fbd.SelectedPath);
                     cbStudent.DataSource = studentFolders;
 
+                    maxStudents = studentFolders.Count();
+                    indexCurrentStudent = 0;
+
                     students = new DataTable("Students");
                     students.Clear();
 
                     students.Columns.Add("Nombre", typeof(string));
-
                     foreach (string studentFolder in studentFolders)
                     {
                         string[] studentSplit = studentFolder.Split(Path.DirectorySeparatorChar);
@@ -56,7 +60,8 @@ namespace QualifierApp
                     }
 
                     dgvStudents.DataSource = students;
-                    
+                    dgvStudents.AutoResizeColumns();
+
                     cbStudent.Enabled = true;
                 }
             }
@@ -96,7 +101,7 @@ namespace QualifierApp
             }
             catch
             {
-                MessageBox.Show("No ha cargado imagenes en el panel.");
+                MessageBox.Show("El alumno no tiene tareas.");
             }
             
         }
@@ -160,7 +165,24 @@ namespace QualifierApp
             {
                 btnClean.Enabled = false;
                 txtNote.Text = "";
+                indexCurrentImage = maxImages;
                 MessageBox.Show("Ya haz calificado toda la tarea.");
+            }
+        }
+
+        private void BtnHomeworkBefore_Click(object sender, EventArgs e)
+        {
+            indexCurrentImage--;
+
+            if (indexCurrentImage < 0)
+            {
+                indexCurrentImage = 0;
+            }
+
+            if (maxImages > indexCurrentImage)
+            {
+                pbImage.Image = new Bitmap(studentImages[indexCurrentImage]);
+                txtNote.Text = "";
             }
         }
 
@@ -195,6 +217,20 @@ namespace QualifierApp
 
                     pbImage.Image = pbImage.Image;
                 }
+            }
+        }
+
+        private void BtnNextStudent_Click(object sender, EventArgs e)
+        {
+            indexCurrentStudent++;
+
+            if(indexCurrentStudent < maxStudents)
+            {
+                cbStudent.SelectedIndex = indexCurrentStudent;
+                dgvStudents.Rows[indexCurrentStudent].Selected = true;
+            } else
+            {
+                MessageBox.Show("Ya no hay mas alumnos.");
             }
         }
     }
