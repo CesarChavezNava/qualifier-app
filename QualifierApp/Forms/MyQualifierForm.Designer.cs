@@ -36,6 +36,7 @@
             this.btnColor = new System.Windows.Forms.Button();
             this.btnComplete = new System.Windows.Forms.Button();
             this.pPictureBox = new System.Windows.Forms.Panel();
+            this.pbImage = new System.Windows.Forms.PictureBox();
             this.nudPincel = new System.Windows.Forms.NumericUpDown();
             this.lblPincel = new System.Windows.Forms.Label();
             this.lblStudents = new System.Windows.Forms.Label();
@@ -46,30 +47,29 @@
             this.btnNote = new System.Windows.Forms.Button();
             this.tcTools = new System.Windows.Forms.TabControl();
             this.tpHome = new System.Windows.Forms.TabPage();
-            this.tpFolder = new System.Windows.Forms.TabPage();
-            this.ttHelp = new System.Windows.Forms.ToolTip(this.components);
-            this.lblColor = new System.Windows.Forms.Label();
-            this.lblNotes = new System.Windows.Forms.Label();
             this.lblHelpNotes = new System.Windows.Forms.Label();
+            this.lblNotes = new System.Windows.Forms.Label();
             this.lblCleanHelp = new System.Windows.Forms.Label();
             this.lblHelpStudent = new System.Windows.Forms.Label();
             this.lblHelpColor = new System.Windows.Forms.Label();
+            this.lblColor = new System.Windows.Forms.Label();
             this.lblHelpFont = new System.Windows.Forms.Label();
             this.lblHelpPincel = new System.Windows.Forms.Label();
             this.btnClean = new System.Windows.Forms.Button();
             this.btnFolder = new System.Windows.Forms.Button();
+            this.tpFolder = new System.Windows.Forms.TabPage();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.pbImage = new System.Windows.Forms.PictureBox();
+            this.ttHelp = new System.Windows.Forms.ToolTip(this.components);
             this.btnHomeworkBefore = new System.Windows.Forms.Button();
             this.btnNextStudent = new System.Windows.Forms.Button();
             this.pPictureBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPincel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFont)).BeginInit();
             this.tcTools.SuspendLayout();
             this.tpHome.SuspendLayout();
             this.tpFolder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
             // txtFolder
@@ -136,6 +136,18 @@
             this.pPictureBox.Size = new System.Drawing.Size(1097, 689);
             this.pPictureBox.TabIndex = 10;
             // 
+            // pbImage
+            // 
+            this.pbImage.Location = new System.Drawing.Point(3, 3);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.Size = new System.Drawing.Size(1091, 681);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbImage.TabIndex = 5;
+            this.pbImage.TabStop = false;
+            this.pbImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbImage_MouseDown);
+            this.pbImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PbImage_MouseMove);
+            this.pbImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbImage_MouseUp);
+            // 
             // nudPincel
             // 
             this.nudPincel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -145,7 +157,7 @@
             this.nudPincel.Size = new System.Drawing.Size(72, 20);
             this.nudPincel.TabIndex = 13;
             this.nudPincel.Value = new decimal(new int[] {
-            3,
+            10,
             0,
             0,
             0});
@@ -268,37 +280,6 @@
             this.tpHome.TabIndex = 0;
             this.tpHome.Text = "Inicio";
             // 
-            // tpFolder
-            // 
-            this.tpFolder.BackColor = System.Drawing.SystemColors.Control;
-            this.tpFolder.Controls.Add(this.btnCreate);
-            this.tpFolder.Location = new System.Drawing.Point(4, 22);
-            this.tpFolder.Name = "tpFolder";
-            this.tpFolder.Padding = new System.Windows.Forms.Padding(3);
-            this.tpFolder.Size = new System.Drawing.Size(1387, 139);
-            this.tpFolder.TabIndex = 1;
-            this.tpFolder.Text = "Carpetas";
-            // 
-            // lblColor
-            // 
-            this.lblColor.AutoSize = true;
-            this.lblColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColor.Location = new System.Drawing.Point(128, 71);
-            this.lblColor.Name = "lblColor";
-            this.lblColor.Size = new System.Drawing.Size(45, 16);
-            this.lblColor.TabIndex = 22;
-            this.lblColor.Text = "Color";
-            // 
-            // lblNotes
-            // 
-            this.lblNotes.AutoSize = true;
-            this.lblNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotes.Location = new System.Drawing.Point(832, 10);
-            this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(49, 16);
-            this.lblNotes.TabIndex = 26;
-            this.lblNotes.Text = "Notas";
-            // 
             // lblHelpNotes
             // 
             this.lblHelpNotes.AutoSize = true;
@@ -310,6 +291,16 @@
             this.lblHelpNotes.TabIndex = 27;
             this.lblHelpNotes.Text = "      ";
             this.ttHelp.SetToolTip(this.lblHelpNotes, "Escribe una nota y esta sera agregada en la parte superior de la imagen");
+            // 
+            // lblNotes
+            // 
+            this.lblNotes.AutoSize = true;
+            this.lblNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNotes.Location = new System.Drawing.Point(832, 10);
+            this.lblNotes.Name = "lblNotes";
+            this.lblNotes.Size = new System.Drawing.Size(49, 16);
+            this.lblNotes.TabIndex = 26;
+            this.lblNotes.Text = "Notas";
             // 
             // lblCleanHelp
             // 
@@ -346,6 +337,16 @@
             this.lblHelpColor.TabIndex = 23;
             this.lblHelpColor.Text = "      ";
             this.ttHelp.SetToolTip(this.lblHelpColor, "Es el color del pincel y de las notas");
+            // 
+            // lblColor
+            // 
+            this.lblColor.AutoSize = true;
+            this.lblColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblColor.Location = new System.Drawing.Point(128, 71);
+            this.lblColor.Name = "lblColor";
+            this.lblColor.Size = new System.Drawing.Size(45, 16);
+            this.lblColor.TabIndex = 22;
+            this.lblColor.Text = "Color";
             // 
             // lblHelpFont
             // 
@@ -403,6 +404,17 @@
             this.btnFolder.UseVisualStyleBackColor = false;
             this.btnFolder.Click += new System.EventHandler(this.BtnFolder_Click);
             // 
+            // tpFolder
+            // 
+            this.tpFolder.BackColor = System.Drawing.SystemColors.Control;
+            this.tpFolder.Controls.Add(this.btnCreate);
+            this.tpFolder.Location = new System.Drawing.Point(4, 22);
+            this.tpFolder.Name = "tpFolder";
+            this.tpFolder.Padding = new System.Windows.Forms.Padding(3);
+            this.tpFolder.Size = new System.Drawing.Size(1387, 139);
+            this.tpFolder.TabIndex = 1;
+            this.tpFolder.Text = "Carpetas";
+            // 
             // btnCreate
             // 
             this.btnCreate.BackColor = System.Drawing.Color.Transparent;
@@ -417,18 +429,6 @@
             this.btnCreate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCreate.UseVisualStyleBackColor = false;
             this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
-            // 
-            // pbImage
-            // 
-            this.pbImage.Location = new System.Drawing.Point(3, 3);
-            this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(1091, 681);
-            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbImage.TabIndex = 5;
-            this.pbImage.TabStop = false;
-            this.pbImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbImage_MouseDown);
-            this.pbImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PbImage_MouseMove);
-            this.pbImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbImage_MouseUp);
             // 
             // btnHomeworkBefore
             // 
@@ -479,6 +479,7 @@
             this.Text = "Inicio";
             this.pPictureBox.ResumeLayout(false);
             this.pPictureBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPincel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFont)).EndInit();
@@ -486,7 +487,6 @@
             this.tpHome.ResumeLayout(false);
             this.tpHome.PerformLayout();
             this.tpFolder.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -11,7 +11,7 @@ namespace QualifierApp
     public partial class MyQualifierForm : Form
     {
         private Color brushColor = Color.Blue;
-        private int brushSize = 3;
+        private int brushSize = 10;
         private int indexCurrentImage = 0;
         private int maxImages = 0;
         private int indexCurrentStudent = 0;
@@ -27,7 +27,9 @@ namespace QualifierApp
 
             cbStudent.Enabled = false;
             btnClean.Enabled = false;
+            btnHomeworkBefore.Enabled = false;
             btnComplete.Enabled = false;
+            pbImage.Visible = false;
         }
 
         private void BtnFolder_Click(object sender, EventArgs e)
@@ -75,6 +77,8 @@ namespace QualifierApp
                 maxImages = 0;
                 btnClean.Enabled = true;
                 btnComplete.Enabled = true;
+                btnHomeworkBefore.Enabled = true;
+                pbImage.Visible = true;
 
                 studentImages = Directory.GetFiles(cbStudent.SelectedValue.ToString()).Where(x => !x.Contains("calificado")).ToArray();
                 maxImages = studentImages.Count();
@@ -84,6 +88,7 @@ namespace QualifierApp
                 MessageBox.Show("No hay tareas cargadas en esta carpeta.");
                 btnClean.Enabled = false;
                 btnComplete.Enabled = false;
+                btnHomeworkBefore.Enabled = false;
             }
         }
         
